@@ -28,7 +28,9 @@ function isImageLink(href) {
 
 function resolveImageSrc(href) {
   if (isImgur(href) && !IMAGE_EXTENSIONS.has(getExtension(href))) {
-    return href + '.jpg';
+    const u = new URL(href);
+    u.pathname = u.pathname + '.jpg';
+    return u.toString();
   }
   return href;
 }
@@ -39,6 +41,7 @@ function convertLinks() {
     const img = document.createElement('img');
     img.src = resolveImageSrc(link.href);
     img.style.cssText = 'display:block;max-width:100%';
+    img.setAttribute('data-image-unhider-img', 'true');
     link.appendChild(img);
     link.setAttribute(ATTR, 'true');
   });
@@ -46,7 +49,7 @@ function convertLinks() {
 
 function revertLinks() {
   Array.from(document.querySelectorAll(`a[${ATTR}]`)).forEach(link => {
-    link.querySelector('img')?.remove();
+    link.querySelector('img[data-image-unhider-img]')?.remove();
     link.removeAttribute(ATTR);
   });
 }

@@ -16,7 +16,9 @@ async function updateBadge(tabId, hostname) {
 
 chrome.action.onClicked.addListener(async (tab) => {
   if (!tab.url) return;
-  const hostname = new URL(tab.url).hostname;
+  const url = new URL(tab.url);
+  if (url.protocol !== 'http:' && url.protocol !== 'https:') return;
+  const hostname = url.hostname;
   const domains = await getEnabledDomains();
   const idx = domains.indexOf(hostname);
   if (idx === -1) {

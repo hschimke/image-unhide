@@ -3,7 +3,7 @@
   "name": "Image UnHider",
   "version": "2.0.0",
   "description": "Automatically convert image links into inline images. Toggle per-site from the toolbar.",
-  "permissions": ["storage", "scripting", "activeTab", "tabs"],
+  "permissions": ["storage", "activeTab", "tabs"],
   "host_permissions": ["http://*/*", "https://*/*"],
   "icons": {
     "16": "i_16.png",
