@@ -35,7 +35,7 @@ function resolveImageSrc(href) {
 
 function convertLinks() {
   Array.from(document.querySelectorAll('a')).forEach(link => {
-    if (!isImageLink(link.href) || link.hasAttribute(ATTR)) return;
+    if (link.hasAttribute(ATTR) || !isImageLink(link.href)) return;
     const img = document.createElement('img');
     img.src = resolveImageSrc(link.href);
     img.style.cssText = 'display:block;max-width:100%';
@@ -45,7 +45,7 @@ function convertLinks() {
 }
 
 function revertLinks() {
-  document.querySelectorAll(`a[${ATTR}]`).forEach(link => {
+  Array.from(document.querySelectorAll(`a[${ATTR}]`)).forEach(link => {
     link.querySelector('img')?.remove();
     link.removeAttribute(ATTR);
   });
