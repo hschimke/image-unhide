@@ -1,12 +1,23 @@
-﻿<html>
-    <body>
-        <h1>Test</h1>
-        <h2>Should Show</h2>
-        <a href="http://i.imgur.com/2Ur3K.gif">http://i.imgur.com/2Ur3K.gif</a><br />
-        <a href="http://i.imgur.com/tHAUg.jpg">Test</a>
-        <img src="wiggle.net" />
-        <h2>Should Not Show</h2>
-        <a href="http://www.reddit.com/r/AskReddit/comments/hntce/women_of_reddit_what_do_you_look_like_before_and/">http://www.reddit.com/r/AskReddit/comments/hntce/women_of_reddit_what_do_you_look_like_before_and/</a><br />
-        <a href="http://code.google.com/chrome/extensions/content_scripts.html#pi">Click</a>
-    </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Image UnHider — Test Page</title>
+</head>
+<body>
+  <h1>Image UnHider — Test Page</h1>
+  <p>Serve locally with <code>npx serve .</code> then enable the extension for <code>localhost</code>.</p>
+
+  <h2>Should Convert</h2>
+  <a href="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg/640px-Good_Food_Display_-_NCI_Visuals_Online.jpg">JPEG via https</a><br>
+  <a href="http://i.imgur.com/2Ur3K.gif">Imgur GIF (http)</a><br>
+  <a href="https://www.gstatic.com/webp/gallery/1.webp">WebP</a><br>
+  <a href="https://svgsilh.com/svg/1295397.svg">SVG</a><br>
+  <a href="https://www.gstatic.com/webp/gallery3/1.png">PNG</a><br>
+
+  <h2>Should Not Convert</h2>
+  <a href="https://www.reddit.com/r/programming/">Reddit page link</a><br>
+  <a href="https://example.com">Plain URL</a><br>
+  <a href="https://example.com/image">No extension, not imgur</a>
+</body>
 </html>
