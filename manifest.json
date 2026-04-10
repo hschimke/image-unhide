@@ -1,31 +1,26 @@
-﻿{
-"update_url":"http://clients2.google.com/service/update2/crx",
-    "name" : "Image UnHider",
-    "version" : "1.0.2.5",
-    
-    "permissions": [
-		"tabs", "http://*/*"
-	],
-    
-    "icons": {
-        "16": "i_16.png",
-        "48": "i_48.png",
-        "128": "i_128.png"
-    },
-    
-    "description" : "Convert links to images to an embedded version of the image.",
-    
-    "background_page": "background.html",
-    
-    "page_action" : {
-        "default_title" : "Fetch Images",
-        "default_icon" : "mag.png"
-    },
-    
-    "content_scripts": [
-        {
-            "matches" : ["http://*/*"],
-            "js": ["variables.js"]
-        }
-    ]
+{
+  "manifest_version": 3,
+  "name": "Image UnHider",
+  "version": "2.0.0",
+  "description": "Automatically convert image links into inline images. Toggle per-site from the toolbar.",
+  "permissions": ["storage", "scripting", "activeTab", "tabs"],
+  "host_permissions": ["http://*/*", "https://*/*"],
+  "icons": {
+    "16": "i_16.png",
+    "48": "i_48.png",
+    "128": "i_128.png"
+  },
+  "action": {
+    "default_title": "Toggle Image UnHider",
+    "default_icon": "mag.png"
+  },
+  "background": {
+    "service_worker": "service-worker.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["content.js"]
+    }
+  ]
 }
